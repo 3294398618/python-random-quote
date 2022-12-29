@@ -1,0 +1,49 @@
+class Node():
+    def __Init__(self,data=None):
+        self.data = data
+        self.left = None 
+        self.right = None
+
+    def insert(self,data):
+        if self.data:                           #当根节点存在时
+            if data < self.data:                #插入值小于目前节点值
+                if self.left:
+                    self.left.insert(data)      #递归调用到下一层
+                else:
+                    self.left = Node(data)      #当右边没有数据节点时，建立新的节点，并插入数据 
+            
+            else:                           
+                if self.right:                  #插入值大于目前节点值    
+                    self.right.insert(data)     
+                else:
+                    self.right = Node(data)
+        else:                                   #根节点不存在时
+            self.data = data                    #建立根结点
+
+    def preorder(self):                         #此乃前序打印
+        print(self.data)                        
+        if self.left:                           #当左节点存在时调用到下一层（左边变成了根结点）
+            self.left.preorder()
+        if self.right:                          #当右节点存在时调用到下一层（右边变成了根结点）
+            self.right.preorder()
+    
+    def 后续打印(self):
+        if self.left:                           #当左节点存在时调用到下一层（左边变成了根结点）
+            self.left.preorder()
+        if self.right:                          #当右节点存在时调用到下一层（右边变成了根结点）
+            self.right.preorder()
+        print(self.data)
+    
+    def 中序打印(self):
+        if self.left:                           #当左节点存在时调用到下一层（左边变成了根结点）
+            self.left.preorder()
+        print(self.data)
+        if self.right:                          #当右节点存在时调用到下一层（右边变成了根结点）
+            self.right.preorder()
+
+
+tree = Node()
+datas = [10,21,5,9,13,28]
+for d in datas:
+    tree.insert(d)
+tree.preorder()

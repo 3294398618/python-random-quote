@@ -1,0 +1,30 @@
+# 先到左边，再到右边，来回比较换位
+def cocktail_sort(nlst):
+    n = len(nlst)
+    is_sorted = True
+    start = 0
+    end = n-1
+    while is_sorted:
+        is_sorted = False
+        # 顺序排比
+        for i in range(start,end):
+            if(nlst[i] > nlst[i+1]):
+                nlst[i],nlst[i+1]=nlst[i+1],nlst[i]
+                is_sorted =True
+                print("排顺过程：",nlst)
+        # 当不用交换位置时退出完成排序
+        if not is_sorted:
+            break
+
+        end = end-1
+        # 方向对比排序
+        for i in range(end-1,start-1,-1):
+            nlst[i],nlst[i+1]=nlst[i+1],nlst[i]
+            is_sorted = True
+        start +=1
+        print("往前排序的过程：",nlst)
+    return nlst
+
+data = [6,1,5,7,3]
+print("原始数列： ",data)
+print("排序后的数列： ", cocktail_sort(data))

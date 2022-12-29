@@ -1,0 +1,15 @@
+# list.sort()可以直接完成冒泡排序
+# 冒泡排序就是从左到右比较换位，再比较换位
+def bubble_sort(nlst):
+    length = len(nlst)
+    for i in range(length-1):
+        print("第%d次外圈排序"%(i+1))
+        for j in range(length-1-i):
+            if nlst[j]>nlst[j+1]:
+                nlst[j],nlst[j+1] = nlst[j+1],nlst[j]
+                print("第%d次内圈排序 ;"%(j+1),nlst) 
+    return nlst
+
+data = [6,1,5,7,3]
+print("原始列表：", data)
+print("排序结果：",bubble_sort(data))

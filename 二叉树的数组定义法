@@ -1,0 +1,20 @@
+
+def create_btree(tree,data):
+    for i in range(len(data)):
+        level = 0        # level表示当前所在层次结点，每次都要从头到尾
+        if i == 0:
+            tree[level] = data[i]
+        else:
+            while tree[level]:  #当节点存在时比较大小然后更新节点，不存在了就可以填入数据了
+                if data[i] > tree[level]:
+                    level = level*2+2
+                else:
+                    level = level*2+1
+        tree[level] = data[i]
+        print(i, tree)
+
+btree = [0]*8
+data = [10,21,5,9,13,28]
+create_btree(btree,data)
+for i in range(len(btree)):
+    print("二叉树数组bttee[%d] = %d"%(i,btree[i]))
